@@ -14,16 +14,12 @@ namespace Arduino_Serial_LED
     {
         public Form1()
         {
-            // Open the serial port and catch any exceptions  this will need a drop down to select com port at a later time
             InitializeComponent();
-            try
-            {
-                serialPort1.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }         
+            String[] Ports = System.IO.Ports.SerialPort.GetPortNames();
+            // Add port name Into a comboBox control 
+
+            comboBox1.Items.AddRange(Ports);
+            comboBox1.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,6 +54,27 @@ namespace Arduino_Serial_LED
             textBox1.Text = serialPort1.ReadTo("@");
             //Change textBox1 colour to match LED colour on Arduino
             textBox1.BackColor = Color.LightGreen;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // Open the serial port and catch any exceptions  this will need a drop down to select com port at a later time
+            
+            try
+            {
+                serialPort1.Close();
+                serialPort1.PortName = comboBox1.Text;
+                serialPort1.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
