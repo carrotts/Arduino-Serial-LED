@@ -18,8 +18,15 @@ namespace Arduino_Serial_LED
             String[] Ports = System.IO.Ports.SerialPort.GetPortNames();
             // Add port name Into a comboBox control 
 
+            
             comboBox1.Items.AddRange(Ports);
-            comboBox1.SelectedIndex = 0;
+            //if no ports are found set text to null
+            if(comboBox1.Items.Count == 0)
+            {
+                comboBox1.Items.Add("null");
+                button4.Enabled = false;
+            }
+            comboBox1.SelectedIndex = comboBox1.SelectionStart;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,7 +65,8 @@ namespace Arduino_Serial_LED
 
         private void button4_Click(object sender, EventArgs e)
         {
-            // Open the serial port and catch any exceptions  this will need a drop down to select com port at a later time
+            // Open the serial port and catch any exceptions  
+            // Drop down added and auto populated with available ports
             
             try
             {
@@ -72,9 +80,6 @@ namespace Arduino_Serial_LED
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+ 
     }
 }

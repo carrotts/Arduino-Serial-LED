@@ -79,6 +79,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(52, 178);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(176, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Waiting";
@@ -101,7 +102,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(61, 21);
             this.comboBox1.TabIndex = 4;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -114,6 +114,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "LED Colour";
             this.ResumeLayout(false);
