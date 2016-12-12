@@ -14,6 +14,7 @@ namespace Arduino_Serial_LED
     {
         public Form1()
         {
+            // Open the serial port and catch any exceptions  this will need a drop down to select com port at a later time
             InitializeComponent();
             try
             {
@@ -27,33 +28,35 @@ namespace Arduino_Serial_LED
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Send the control code for Red then wait for response
-            string RED;
+           // Send the control code for Red which is an ASCII r then wait for response
+           // string RED; not needed as directly written to
             serialPort1.DiscardInBuffer();
             serialPort1.Write("r");
-            RED = serialPort1.ReadTo("@");
-            textBox1.Text = RED;
+            // Changed code so textBox1 written directly from serial port
+            textBox1.Text = serialPort1.ReadTo("@");
+            //Change textBox1 colour to match LED colour on Arduino
             textBox1.BackColor = Color.Red;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string RED;
+            // Send the control code for Orange which is an ASCII o then wait for response
             serialPort1.DiscardInBuffer();
             serialPort1.Write("o");
-            
-            RED = serialPort1.ReadTo("@");
-            textBox1.Text = RED;
+            // Changed code so textBox1 written directly from serial port
+            textBox1.Text = serialPort1.ReadTo("@");
+            //Change textBox1 colour to match LED colour on Arduino
             textBox1.BackColor = Color.Orange;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string RED;
+            // Send the control code for Green which is an ASCII g then wait for response
             serialPort1.DiscardInBuffer();
             serialPort1.Write("g");
-            RED = serialPort1.ReadTo("@");
-            textBox1.Text = RED;
+            // Changed code so textBox1 written directly from serial port
+            textBox1.Text = serialPort1.ReadTo("@");
+            //Change textBox1 colour to match LED colour on Arduino
             textBox1.BackColor = Color.LightGreen;
         }
     }
