@@ -73,13 +73,13 @@ namespace Arduino_Serial_LED
                 serialPort1.Close();
                 serialPort1.PortName = comboBox1.Text;
                 serialPort1.Open();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
  
     }
 }
